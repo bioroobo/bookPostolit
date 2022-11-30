@@ -1,0 +1,27 @@
+{% extends "firstapp/base.html" %}
+{% block title %}About{% endblock title %}
+{% block header %}About company{% endblock header %}
+{% block content %}
+    a bundle of 'about' and 'base' templates <br>
+    Today: {% now "" %} <br>
+
+    <p>Year in the form of four digits : {% now "Y" %}</p>
+    <p>Year in the form of the last two digits : {% now "y" %}</p>
+    <p>Full name of the month : {% now "F" %}</p>
+    <p>Abbreviated Month Name : {% now "M" %}</p>
+    <p>Two digits of the month number : {% now "m" %}</p>
+    <p>Abbreviation of the Month (Associated Press) : {% now "N" %}</p>
+    <p>One digit of the month number : {% now "n" %}</p>
+    <p>Day of the month : {% now "j" %}</p>
+    <p>Text day of the week : {% now "l" %}</p>
+    <p>Time clock of "12" format : {% now "h" %}</p>
+    <p>time in hours of format "24" : {% now "H" %}</p>
+    <p>minutes (0-59) : {% now "i" %}</p>
+    <p>seconds (0-59) : {% now "s" %}</p>
+    <p>Date (day/month/year) : {% now "j/m/Y" %}</p>
+    <p>Time (h:m:s) : {% now "H:i:s" %}</p>
+{% endblock content %}
+
+https://django.fun/ru/docs/django/3.2/ref/templates/builtins/#ref-templates-builtins-tags
+https://docs.djangoproject.com/en/3.2/ref/templates/builtins/#ref-templates-builtins-tags
+

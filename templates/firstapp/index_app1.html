@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Internal CSS -->
+    <style>h1{color:green;}</style>
+    <style>p{color:blue;}</style>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="mystyle.css">
+</head>
+<body>
+    <h1>{{header}}</h1>
+    <p>{{message}}</p>
+    <p>Address: st.{{addr.0}} h.{{addr.1}}  ap.{{addr.2}}</p>
+    <!-- Inline CSS -->
+    <p style="color:red;">User name: {{user.name}};  age: {{user.age}}</p>
+
+    <p>Categories:</p>
+    {% for i in categories %}
+        <li>{{ i }}</li>
+    {% empty %}
+        <p>NO Categories</p>
+    {% endfor %}
+
+    {% with name='Pitoka' number=9 %}
+        <div>
+            <p>Magazin: {{ name }}  Number={{ number }}</p>
+        </div>
+    {% endwith %}
+</body>
+</html>

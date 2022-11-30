@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet">
+</head>
+<body>
+    <h1>HOME!!!</h1>
+    <h2>templates/firstapp/home.html</h2>
+    <img src="{% static 'images/free-sticker-elephant-4193367.png' %}">
+    <br>
+    Today: {% now "j/N/Y" %} <br>
+    Today: {% now "" %} <br>
+</body>
+</html>

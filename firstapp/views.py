@@ -1,8 +1,40 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.template.response import TemplateResponse
+
 
 def index(request):
-    return HttpResponse("<h2>Главная</h2>")
+    #resp =  HttpResponse("<h2>Главная</h2>")
+    resp = render(request, "index.html")
+    return resp
+
+
+def index_app1(request):
+    categories = ["Printers", "Scaners", "Monitors", "Discs"]
+    addr = ('5-avenu', 26, 40)
+    user = {'name':'Pieter',
+            'age':20 }
+    data = {'header':'transport parameters to template',
+            'message':'downloaded template',
+            'addr':addr,
+            'user':user,
+            'categories':categories }
+    resp = render(request, "firstapp/index_app1.html", context=data)
+    resp = TemplateResponse(request, "firstapp/index_app1.html", data)
+    return resp
+
+def appindex(request):
+    resp = render(request, "firstapp/appindex.html")
+    return resp
+
+def appabout(request):
+    resp = render(request, "firstapp/appabout.html")
+    return resp
+
+def home(request):
+    resp = render(request, "firstapp/home.html")
+    resp = TemplateResponse(request, "firstapp/home.html")
+    return resp
 
 def about(request):
     return HttpResponse("<h2>О сайте</h2>")
