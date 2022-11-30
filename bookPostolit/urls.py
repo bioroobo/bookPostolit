@@ -28,7 +28,7 @@ urlpatterns = [
 
     path('admin/', admin.site.urls),
     path('', views.index),
-    path('index_app1', views.index_app1),
+    path('index_app1', views.index_app1), # http://127.0.0.1:8000/index_app1
     path('contact/', views.contact),  # это правильно. записывать с окончанием на '/'
 
     # использование регулярных выражений
@@ -45,9 +45,11 @@ urlpatterns = [
     path('users/', views.users),  # маршурт по умолчанию
 
     path('cars/', views.cars),  # http://127.0.0.1:8000/cars/?id=2&name=mers
-    path('home/', views.home),
+    path('home/', views.home), # http://127.0.0.1:8000/home/
 
     path('appindex/', views.appindex),
-    path('appabout/', views.appabout),
+    path('appabout/', views.appabout), # http://127.0.0.1:8000/appabout/
+
+    path('indexform/', views.indexform),
 
 ]

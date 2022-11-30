@@ -2,6 +2,8 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.template.response import TemplateResponse
 
+from firstapp.forms import UserForm
+
 
 def index(request):
     #resp =  HttpResponse("<h2>Главная</h2>")
@@ -57,3 +59,16 @@ def cars(request):
     name = request.GET.get('name', 'None')
     output = "<h2>Автомобиль</h2><h3>[id:{0}]</h3><h4>Марка:{1}</h4>".format(id, name)
     return HttpResponse(output)
+
+
+def indexform(request):
+    if request.method == "POST":
+        name = request.POST.get('name') # получить значение поля name
+        age = request.POST.get('age')
+        output = '<h2>User</h2><h3>Name - {0}, Age - {1}</h3>'.format(name, age)
+        return HttpResponse(output)
+    else:
+        userform = UserForm()
+        resp = render(request, "firstapp/indexform.html", {'form':userform})
+        return resp
+
