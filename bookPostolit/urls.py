@@ -51,5 +51,5 @@ urlpatterns = [
     path('appabout/', views.appabout), # http://127.0.0.1:8000/appabout/
 
     path('indexform/', views.indexform),
-
+    path('formfields/', views.formfields),
 ]

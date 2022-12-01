@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.template.response import TemplateResponse
 
 from firstapp.forms import UserForm
+from firstapp.formfields import UserFormFields
 
 
 def index(request):
@@ -71,4 +72,10 @@ def indexform(request):
         userform = UserForm()
         resp = render(request, "firstapp/indexform.html", {'form':userform})
         return resp
+
+
+def formfields(request):
+    userform = UserFormFields(field_order=["ling","age","comment"])
+    resp = render(request, "firstapp/formfields.html", {'form':userform})
+    return resp
 
