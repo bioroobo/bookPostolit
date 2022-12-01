@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.template.response import TemplateResponse
 
 from firstapp.forms import UserForm
-from firstapp.formfields import UserFormFields, UserFormFieldsDisplay, UserFormValid
+from firstapp.formfields import UserFormFields, UserFormFieldsDisplay, UserFormValid, FormTuningField, FormTuningField2, FormTuningField3
 
 
 def index(request):
@@ -99,3 +99,45 @@ def valid(request):
         userform = UserFormValid()
         resp = render(request, "firstapp/valid.html", {'form':userform})
         return resp
+
+
+def tuningfield(request):
+    userform = FormTuningField()
+
+    if request.method == "POST":
+        userform = FormTuningField(request.POST)
+        if userform.is_valid():
+            name = userform.cleaned_data['name']
+            output = '<h2>Data is correct for customer {0}</h2>'.format(name)
+            return HttpResponse(output)
+
+    resp = render(request, "firstapp/tuningfield.html", {'form':userform})
+    return resp
+
+
+def tuningfield2(request):
+    userform = FormTuningField2()
+
+    if request.method == "POST":
+        userform = FormTuningField2(request.POST)
+        if userform.is_valid():
+            name = userform.cleaned_data['name']
+            output = '<h2>Data is correct for customer {0}</h2>'.format(name)
+            return HttpResponse(output)
+
+    resp = render(request, "firstapp/tuningfield2.html", {'form':userform})
+    return resp
+
+
+def tuningfield3(request):
+    userform = FormTuningField3()
+
+    if request.method == "POST":
+        userform = FormTuningField3(request.POST)
+        if userform.is_valid():
+            name = userform.cleaned_data['name']
+            output = '<h2>Data is correct for customer {0}</h2>'.format(name)
+            return HttpResponse(output)
+
+    resp = render(request, "firstapp/tuningfield3.html", {'form':userform})
+    return resp

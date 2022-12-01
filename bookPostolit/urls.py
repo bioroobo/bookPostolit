@@ -54,4 +54,8 @@ urlpatterns = [
     path('formfields/', views.formfields),
     path('fieldsdisplay/', views.fieldsdisplay),
     path('valid/', views.valid),
+
+    path('tuningfield/', views.tuningfield),
+    path('tuningfield2/', views.tuningfield2),
+    path('tuningfield3/', views.tuningfield3),
 ]

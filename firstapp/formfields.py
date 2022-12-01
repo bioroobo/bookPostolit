@@ -41,3 +41,21 @@ class UserFormValid(forms.Form):
     uemail = forms.EmailField(label='User e-mail', initial='@')
     receive_ads = forms.BooleanField(label='Do you agree to receive ads?', required=False)
 
+
+class FormTuningField(forms.Form):
+    name = forms.CharField(label='Customer name', min_length=3)
+    age = forms.IntegerField(label='Customer age', min_value=1, max_value=100)
+
+
+class FormTuningField2(forms.Form):
+    name = forms.CharField(label='Customer name', min_length=3)
+    age = forms.IntegerField(label='Customer age', min_value=1, max_value=100)
+    required_css_class = "field"
+    error_css_class = "error"
+
+
+class FormTuningField3(forms.Form):
+    name = forms.CharField(label='Customer name', min_length=3,
+                           widget=forms.TextInput(attrs={"class": "myfield"}))
+    age = forms.IntegerField(label='Customer age', min_value=1, max_value=100,
+                             widget=forms.NumberInput(attrs={"class": "myfield"}))

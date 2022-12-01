@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Django Form: tuning field v2</title>
+    <style>
+        .field{font-weight:bold;}
+        .error{color:red;}
+    </style>
+</head>
+<body class="container">
+    <h2>Style fields</h2>
+    <form method="POST" novalidate>
+        {% csrf_token %}
+        <table>
+          {{ form }}
+        </table>
+        <input type="submit" value="-Send-">
+    </form>
+</body>
+</html>
