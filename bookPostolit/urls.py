@@ -52,4 +52,6 @@ urlpatterns = [
 
     path('indexform/', views.indexform),
     path('formfields/', views.formfields),
+    path('fieldsdisplay/', views.fieldsdisplay),
+    path('valid/', views.valid),
 ]

@@ -27,3 +27,17 @@ class UserFormFields(forms.Form):
                                                  (4, "Россия")))
     comment = forms.CharField(label="Комментарий", widget=forms.Textarea, initial='No comment')
     field_order = ["datetime", "age", "file"]
+
+
+class UserFormFieldsDisplay(forms.Form):
+    name = forms.CharField(label='User name', max_length=15, help_text='name < 15 symbols')
+    age = forms.IntegerField(label='User age', initial=2)
+
+
+class UserFormValid(forms.Form):
+    name = forms.CharField(label='User name', min_length=4, max_length=8, initial='none')
+    age = forms.IntegerField(label='User age', initial=2)
+    weight = forms.DecimalField(min_value=3, max_value=200, decimal_places=2)
+    uemail = forms.EmailField(label='User e-mail', initial='@')
+    receive_ads = forms.BooleanField(label='Do you agree to receive ads?', required=False)
+

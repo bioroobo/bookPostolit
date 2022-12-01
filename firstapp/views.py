@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.template.response import TemplateResponse
 
 from firstapp.forms import UserForm
-from firstapp.formfields import UserFormFields
+from firstapp.formfields import UserFormFields, UserFormFieldsDisplay, UserFormValid
 
 
 def index(request):
@@ -79,3 +79,23 @@ def formfields(request):
     resp = render(request, "firstapp/formfields.html", {'form':userform})
     return resp
 
+
+def fieldsdisplay(request):
+    userform = UserFormFieldsDisplay()
+    resp = render(request, "firstapp/fieldsdisplay.html", {'form':userform})
+    return resp
+
+
+def valid(request):
+    if request.method == "POST":
+        userform = UserFormValid(request.POST)
+        if userform.is_valid():
+            name = userform.cleaned_data['name']
+            output = '<h2>Data is correct for user {0}</h2>'.format(name)
+            return HttpResponse(output)
+        else:
+            return HttpResponse('Error: is not correct date!')
+    else:
+        userform = UserFormValid()
+        resp = render(request, "firstapp/valid.html", {'form':userform})
+        return resp
