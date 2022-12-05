@@ -20,6 +20,11 @@ from django.views.generic import TemplateView
 from firstapp import views
 
 urlpatterns = [
+    # CRUD
+    path('', views.crud_index),
+    path('create/', views.crud_create),
+    path('edit/<int:id>/', views.crud_edit),
+    path('delete/<int:id>/', views.crud_delete),
 
     # TemplateView
     path('about/', TemplateView.as_view(template_name='firstapp/about.html')),
@@ -58,4 +63,5 @@ urlpatterns = [
     path('tuningfield/', views.tuningfield),
     path('tuningfield2/', views.tuningfield2),
     path('tuningfield3/', views.tuningfield3),
+
 ]

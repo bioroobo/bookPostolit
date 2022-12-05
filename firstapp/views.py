@@ -1,10 +1,13 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect, HttpResponseNotFound
 from django.template.response import TemplateResponse
 
 from firstapp.forms import UserForm
-from firstapp.formfields import UserFormFields, UserFormFieldsDisplay, UserFormValid, FormTuningField, FormTuningField2, FormTuningField3
 
+#from firstapp.formfields import UserFormFields, UserFormFieldsDisplay, UserFormValid, FormTuningField, FormTuningField2, FormTuningField3
+import firstapp.formfields
+
+from .models import Person
 
 def index(request):
     #resp =  HttpResponse("<h2>Главная</h2>")
@@ -141,3 +144,42 @@ def tuningfield3(request):
 
     resp = render(request, "firstapp/tuningfield3.html", {'form':userform})
     return resp
+
+
+def crud_index(request):
+    people = Person.objects.all()
+    res = render(request, 'firstapp/crud_index.html', {'people':people})
+    return res
+
+
+def crud_create(request):
+    if request.method == 'POST':
+        person = Person()
+        person.name = request.POST.get('name')
+        person.age = request.POST.get('age')
+        person.save()
+    res = HttpResponseRedirect('/')
+    return res
+
+
+def crud_edit(request, id):
+    try:
+        person = Person.objects.get(id=id)
+        if request.method == 'POST':
+            person.name = request.POST.get('name')
+            person.age = request.POST.get('age')
+            person.save()
+            return HttpResponseRedirect('/')
+        else:
+            return render(request, "firstapp/crud_edit.html", {'person':person})
+    except Person.DoesNotExist:
+        return HttpResponseNotFound('<h2>Person is not found</h2>')
+
+
+def crud_delete(request, id):
+    try:
+        person = Person.objects.get(id=id)
+        person.delete()
+        return HttpResponseRedirect('/')
+    except Person.DoesNotExist:
+        return HttpResponseNotFound('<h2>Person is not found</h2>')
