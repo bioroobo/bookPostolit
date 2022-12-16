@@ -15,3 +15,14 @@ class Product(models.Model):
     name = models.CharField(max_length=30)
     price = models.DecimalField(max_digits=12, decimal_places=2)
 
+
+
+# many to many
+
+class Course(models.Model):
+    name = models.CharField(max_length=30)
+
+
+class Student(models.Model):
+    name = models.CharField(max_length=30)
+    courses = models.ManyToManyField(Course)
