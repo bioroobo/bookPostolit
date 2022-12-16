@@ -6,6 +6,10 @@ class Person(models.Model):
     objects = models.Manager()
     DoesNotExist = models.Manager # на работу не влияет, чтобы pycharm не выдавало ошибку
 
+
+
+# one to many:
+
 class Company(models.Model):
     name = models.CharField(max_length=30)
 
@@ -17,7 +21,7 @@ class Product(models.Model):
 
 
 
-# many to many
+# many to many:
 
 class Course(models.Model):
     name = models.CharField(max_length=30)
@@ -26,3 +30,16 @@ class Course(models.Model):
 class Student(models.Model):
     name = models.CharField(max_length=30)
     courses = models.ManyToManyField(Course)
+
+
+
+# one to one:
+
+class User(models.Model):
+    name = models.CharField(max_length=20)
+
+class Account(models.Model):
+    login = models.CharField(max_length=20)
+    password = models.CharField(max_length=20)
+    user = models.OneToOneField(User, on_delete = models.CASCADE, primary_key=True)
+
